@@ -93,7 +93,7 @@ h3 {
 }
 
 .two-column {
-  grid-template-columns: 100px 200px;
+  grid-template-columns: 120px 200px;
 }
 
 .two-column-1-1fr {
@@ -113,15 +113,15 @@ h3 {
 }
 
 .column-repeat {
-  grid-template-columns: repeat(2, 70px 150px);
+  grid-template-columns: repeat(2, 80px 150px);
 }
 
 .column-repeat-plus {
-  grid-template-columns: 1fr repeat(2, 50px 100px) 1fr;
+  grid-template-columns: 1fr repeat(2, 90px 100px) 1fr;
 }
 
 .column-repeat-auto {
-  grid-template-columns: repeat(auto-fill, 50px);
+  grid-template-columns: repeat(auto-fill, 90px);
 }
 
 .auto-rows-50-75 {
