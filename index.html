@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid cheat sheet</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/highlight.css">
+  </head>
+
+  <body>
+    <div id="header">
+      <div>
+        <h1>Grid cheat sheet</h1>
+        <h2>Because one thing I never fail at is that I forget to remember.</h2>
+      </div>
+    </div>
+    <main>
+      <p></p>
+
+      <section>
+        <h3>Columns of custom width</h3>
+        <pre><code class="language-css">
+          [selector] {
+            grid-template-columns: 100px 200px;
+          }
+        </code></pre>
+
+        <div class="grid two-column">
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Columns using Fraction unit</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 1fr 1fr;
+            }
+        </code></pre>
+
+        <div class="grid two-column-1-1fr">
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+        </div>
+      </section>
+
+      <section>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 1fr 2fr;
+            }
+        </code></pre>
+
+        <div class="grid two-column-1-2fr">
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Columns with minmax method</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 1fr minmax(50px, max-content) 1fr;
+            }
+        </code></pre>
+
+        <div class="grid three-column-max">
+          <div>Grid item</div>
+          <div>50px - max-content</div>
+          <div>Grid item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Columns with minmax method and Fraction unit</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 1fr minmax(30px, min-content) 1fr;
+            }
+        </code></pre>
+
+        <div class="grid three-column-min">
+          <div>Grid item</div>
+          <div>50px - min-content</div>
+          <div>Grid item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Columns with repeat method</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: repeat(2, 70px 150px);
+            }
+        </code></pre>
+
+        <div class="grid column-repeat">
+          <div class="yellow">One</div>
+          <div>Two</div>
+          <div class="yellow">Three</div>
+          <div>Four</div>
+          <div class="yellow">Five</div>
+          <div>Six</div>
+          <div class="yellow">Seven</div>
+          <div>Eight</div>
+          <div class="yellow">Nine</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Columns with repeat method and Fraction unit</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 1fr repeat(2, 50px 100px) 1fr;
+            }
+        </code></pre>
+
+        <div class="grid column-repeat-plus">
+          <div>One</div>
+          <div class="yellow">Two</div>
+          <div class="blue">Three</div>
+          <div class="yellow">Four</div>
+          <div class="blue">Five</div>
+          <div>Six</div>
+          <div>Seven</div>
+          <div class="yellow">Eight</div>
+          <div class="blue">Nine</div>
+          <div class="yellow">Ten</div>
+          <div class="blue">Eleven</div>
+          <div>Twelve</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Columns with repeat and auto-fill</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: repeat(auto-fill, 50px);
+              width: 350px;
+            }
+        </code></pre>
+
+        <div class="grid column-repeat-auto">
+          <div>One</div>
+          <div>Two</div>
+          <div>Three</div>
+          <div>Four</div>
+          <div>Five</div>
+          <div>Six</div>
+          <div>Seven</div>
+          <div>Eight</div>
+          <div>Nine</div>
+          <div>Ten</div>
+          <div>Eleven</div>
+          <div>Twelve</div>
+        </div>
+      </section>
+
+      <section style="width: 350px;">
+        <h3>Implicit (auto) rows</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 100px 200px;
+              grid-auto-rows: 50px 70px;
+            }
+        </code></pre>
+
+        <div class="grid two-column auto-rows-50-75">
+          <div class="yellow">Grid item</div>
+          <div class="yellow">Grid item</div>
+          <div class="blue">Grid item</div>
+          <div class="blue">Grid item</div>
+          <div class="yellow">Grid item</div>
+          <div class="yellow">Grid item</div>
+          <div class="blue">Grid item</div>
+          <div class="blue">Grid item</div>
+          <div class="yellow">Grid item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Implicit (auto) and explicit rows</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 140px 1fr;
+              grid-template-rows: 70px 200px;
+              grid-auto-rows: 50px 70px;
+            }
+        </code></pre>
+
+        <div class="grid"
+          style="grid-template-columns: 140px 1fr; grid-template-rows: 70px 200px; grid-auto-rows: 50px 70px">
+          <div>Explicit item</div>
+          <div>Explicit item</div>
+          <div>Explicit item</div>
+          <div>Explicit item</div>
+          <div class="yellow">Implicit item</div>
+          <div class="blue">Implicit item</div>
+          <div class="yellow">Implicit item</div>
+          <div class="blue">Implicit item</div>
+          <div class="yellow">Implicit item</div>
+          <div class="blue">Implicit item</div>
+          <div class="yellow">Implicit item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Implicit (auto) rows with minmax end explicit rows</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 140px 1fr;
+              grid-template-rows: 50px 120px;
+              grid-auto-rows: minmax(100px, max-content);
+            }
+        </code></pre>
+
+        <div class="grid"
+          style="grid-template-columns: 140px 1fr; grid-template-rows: 50px 120px; grid-auto-rows: minmax(100px, max-content)">
+          <div>Explicit item</div>
+          <div>Explicit item</div>
+          <div>Explicit item</div>
+          <div>Explicit item</div>
+          <div class="yellow">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iste, ipsam voluptatum in ab
+            nulla
+            harum laborum quia rerum non commodi distinctio ut eos voluptate optio sequi mollitia. Distinctio, ad amet!
+          </div>
+          <div class="blue">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet consequuntur totam quas
+            maxime. Iure ullam nemo dolores, nulla ipsa alias est quas quo in earum vel, cum impedit amet voluptates?
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Implicit (auto) items added as rows</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 100px 1fr;
+              grid-template-rows: 70px 100px;
+              grid-auto-flow: row;
+            }
+        </code></pre>
+
+        <div class="grid" style="grid-template-columns: 100px 1fr; grid-template-rows: 70px 100px; grid-auto-flow: row">
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div class="yellow">Auto item</div>
+          <div class="blue">Auto item</div>
+          <div class="yellow">Auto item</div>
+          <div class="blue">Auto item</div>
+          <div class="yellow">Auto item</div>
+          <div class="blue">Auto item</div>
+          <div class="yellow">Auto item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Implicit (auto) items added as columns</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 50px 1fr;
+              grid-template-rows: 70px 100px;
+              grid-auto-flow: column;
+            }
+        </code></pre>
+
+        <div class="grid"
+          style="grid-template-columns: 50px 1fr; grid-template-rows: 70px 100px; grid-auto-flow: column">
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div class="yellow">Auto item</div>
+          <div class="blue">Auto item</div>
+          <div class="yellow">Auto item</div>
+          <div class="blue">Auto item</div>
+          <div class="yellow">Auto item</div>
+          <div class="blue">Auto item</div>
+          <div class="yellow">Auto item</div>
+          <div class="blue">Auto item</div>
+          <div class="yellow">Auto item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Grid gap: horizontal vertical</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-gap: 5px 30px;
+            }
+        </code></pre>
+
+        <div class="grid" style="grid-template-columns: 1fr 150px 1fr; grid-gap: 5px 30px">
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+          <div>Grid item</div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Grid lines - span over set number of column lines</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 1fr 1fr 1fr;
+            }
+        </code></pre>
+
+        <p>The same way of settings one item to span number of grid lines.</p>
+
+        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr;">
+          <div class="blue" style="grid-column-start: 1; grid-column-end: 4;">
+            grid-column-start: 1
+            <br />
+            grid-column-end: 4
+          </div>
+          <div class="yellow" style="grid-column: 1 / 4;;">
+            grid-column: 1 / 4
+          </div>
+          <div style="grid-column: 1 / -1;;">
+            grid-column: 1 / -1
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Grid lines - span over both column and rows lines</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns: 1fr 1fr 1fr 1fr;
+            }
+        </code></pre>
+
+        <div class="grid" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+          <div class="yellow" style="grid-column: 1 / span 4;">
+            1: grid-column: 1 / span 4
+          </div>
+          <div class="blue" style="grid-row: 2 / 5;">
+            2: grid-row: 2 / 5
+          </div>
+          <div class="yellow" style="grid-column: 2 / 4;">
+            3: grid-column: 2 / 4
+          </div>
+          <div class="blue" style="grid-row: 3 / 5;">
+            4: grid-row: 3 / 5
+          </div>
+          <div>5: Grid item</div>
+          <div>6: Grid item</div>
+          <div>7: Grid item</div>
+          <div class="yellow" style="grid-column: 3 / 5;">
+            8: grid-column: 3 / 5
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Grid lines names</h3>
+        <pre><code class="language-css">
+            [selector] {
+              grid-template-columns:
+                [grid-start] 1fr
+                [content-start] 1fr
+                [content-end] 1fr
+                [grid-end];
+              grid-template-rows: 1fr 5fr 1fr;
+            }
+        </code></pre>
+
+        <div class="grid" style="
+        grid-template-columns:
+          [grid-start] 1fr
+          [content-start] 1fr
+          [content-end] 1fr
+          [grid-end];
+        grid-template-rows: 1fr 5fr 1fr;">
+          <div class="yellow" style="grid-column: grid-start / grid-end;">
+            1: grid-column: grid-start / grid-end
+          </div>
+          <div class="blue">2: Grid item</div>
+          <div class="yellow">3: Grid item</div>
+          <div class="blue">4: Grid item</div>
+          <div class="yellow" style="grid-column: grid-start / grid-end;">
+            5: grid-column: grid-start / grid-end
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Areas and grid-lines names</h3>
+        <p>Area combines grid-row and grid-column lines props into one:</p>
+        <pre><code class="language-css">
+            grid-area: row-start column-start row-end column-end
+        </code></pre>
+        <br />
+        <pre><code class="language-css">
+          grid-template-columns:
+            [grid-start] 1fr
+            [content-start] 1fr
+            [content-end] 1fr
+            [grid-end];
+          grid-template-rows:
+            [header-start] 1fr
+            /* each line can have added more than one name */
+            [header-end body-start] 1fr
+            [body-end footer-start] 1fr
+            [footer-end];
+        </code></pre>
+
+        <div class="grid" style="
+        grid-template-columns:
+            [grid-start] 1fr
+            [content-start] 1fr
+            [content-end] 1fr
+            [grid-end];
+          grid-template-rows:
+            [header-start] 1fr
+            [header-end body-start] 3fr
+            [body-end footer-start] 1fr
+            [footer-end];">
+          <div class="yellow" style="grid-column: grid-start / grid-end;">
+            1: grid-column: grid-start / grid-end
+          </div>
+          <div class="blue" style="grid-area:
+          body-start /
+          grid-start /
+          footer-end /
+          content-end">
+            2: grid-area: body-start / grid-start / footer-end / content-end
+          </div>
+          <div>3: Grid item</div>
+          <div class="yellow" style="grid-column: content-end / grid-end;">
+            4: grid-column: content-end / grid-end
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Auto (magick) content areas</h3>
+        <p>By using name template [name-start] and [name-end] you can define rows and columns lines and use just the
+          [name] key
+          word for area.</p>
+
+        <pre><code class="language-css">
+          grid-template-columns:
+            [content-start]
+            1fr 1fr
+            [content-end]
+            1fr;
+          grid-template-rows:
+            1fr
+            [content-start]
+            5fr 1fr
+            [content-end];
+        </code></pre>
+        <br />
+        <pre><code class="language-css">
+          [selector] {
+            grid-area: content;
+          }
+        </code></pre>
+
+        <div class="grid" style="
+          grid-template-columns:
+            [content-start]
+            1fr 1fr
+            [content-end]
+            1fr;
+          grid-template-rows:
+            1fr
+            [content-start]
+            5fr 1fr
+            [content-end];">
+          <div class="yellow" style="grid-column: 1 / -1;">
+            1: grid-column: 1 / -1
+          </div>
+          <div class="blue" style="grid-area: content;">
+            2: grid-area: content
+          </div>
+          <div>3: Grid item</div>
+          <div class="yellow" style="grid-column:  3 / -1;">
+            4: grid-column: 3 / -1
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h3>Grid template areas</h3>
+        <pre><code class="language-css">
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr 2fr 2fr 1fr;
+          grid-template-areas: "header header header"
+                               "nav main ads"
+                               "nav main featured"
+                               "footer footer footer";
+        </code></pre>
+
+        <div class="grid" style='
+          justify-content: space-between;
+          align-items: space-between;
+          grid-template-columns: 1fr 1fr 1fr;
+          grid-template-rows: 1fr 2fr 2fr 1fr;
+          grid-template-areas: "header header header"
+                               "nav main ads"
+                              "nav main featured"
+                              "footer footer footer";
+        '>
+
+          <div style="grid-area: header;">1: grid-area: header</div>
+          <div style="grid-area: nav;">2: grid-area: nav</div>
+          <div style="grid-area: main;">3: grid-area: main</div>
+          <div style="grid-area: ads;">4: grid-area: ads</div>
+          <div style="grid-area: featured;">5: grid-area: featured</div>
+          <div style="grid-area: footer;">6: grid-area: footer</div>
+
+        </div>
+      </section>
+    </main>
+
+    <script src="js/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+  </body>
+
+</html>
